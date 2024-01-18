@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot</title>
+	<style type="text/css">
+		body{
+			background-color: rgb(19,98,7);
+			margin: 0;
+		}
+		.slot{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 2vw;
+			margin-top: 5vh;
+			width: 92vw;
+			height: 75vh;
+			border-radius: 2vw;
+			border-width: 2vw;
+			background-color: rgb(135, 161, 142);
+		}.display{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 9vw;
+			margin-top: 10vh;
+			width: 72vw;
+			height: 20vh;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(255,255,255);
+		}
+		.image{
+			width: 11.5vw;
+			margin-left: 1.8vw;
+			margin-top: 5vh;
+		}
+		.spin{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 9vw;
+			margin-top: 3vh;
+			width: 32vw;
+			height: 10vh;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(255,255,0);
+			font-size: 9vw;
+		}
+		.Saldo{
+			margin-left: 7vw;
+			margin-top: 4vh;
+			font-size: 9vw;
+		}
+		.report{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 9vw;
+			margin-top: 2vh;
+			width: 72vw;
+			height: 5vh;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(30,30,30);
+			font-size: 4vw;
+			color: gold;
+			vertical-align: middle;
+		}
+		.puntata{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 6vw;
+			margin-top: 2vh;
+			width: 32vw;
+			height: 8vh;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(255,150,0);
+			font-size: 8vw;
+		}
+	</style>
+</head>
+<body>
+	<div class="slot">
+		<div class="display" id="display">
+			<span id="uno"><img src="images/slot/1.jpg" class="image"></span>
+			<span id="due"><img src="images/slot/1.jpg" class="image"></span>
+			<span id="tre"><img src="images/slot/1.jpg" class="image"></span>
+			<span id="quattro"><img src="images/slot/1.jpg" class="image"></span>
+			<span id="cinque"><img src="images/slot/1.jpg" class="image"></span>
+		</div>
+		<div class="report">
+			<span id="puntatarep"></span> <span id="vincitarep"></span>
+		</div>
+		<button class="spin" onclick="spin();">
+			<b>
+				SPIN!
+			</b>
+		</button> 
+		<input class="puntata" type="number" id="puntata" name="puntata" step="5">
+	</div>
+	<div class="Saldo">Saldo: <span id="saldo">0</span>$</div>
+	<script type="text/javascript">
+		var Saldo=localStorage.getItem("saldo");
+		var uno,due,tre,quattro,cinque;
+		var sp=0;
+		var dl=50;
+		var puntata=0;
+		var vincita=0;
+		if(localStorage.getItem("registered")==1){
+
+		}else{
+			Saldo=10;
+			localStorage.setItem("registered", 1);
+		}
+
+		function spin(){
+			if(sp==0 || sp==51){
+				puntata=document.getElementById("puntata").value;
+				puntata=Math.round(puntata*100)/100;
+				if(puntata<=Saldo && puntata>0){
+					Saldo=Saldo-puntata;
+					Saldo=Math.round(Saldo * 100) / 100;
+					localStorage.setItem("saldo", Saldo);
+					document.getElementById("saldo").innerHTML=Saldo;
+					document.getElementById("puntatarep").innerHTML="Puntata: "+puntata+"$ ";
+					document.getElementById("vincitarep").innerHTML="";
+					sp=0;
+					myInterval = setInterval(spinny, dl);
+				}else if(puntata>Saldo){
+					document.getElementById("puntatarep").innerHTML="Puntata superiore al saldo.";
+					document.getElementById("vincitarep").innerHTML="";
+				}else{
+					document.getElementById("puntatarep").innerHTML="Puntata non valida.";
+					document.getElementById("vincitarep").innerHTML="";
+				}
+				
+			}	
+		}
+
+		function spinny(){
+			console.log("spinny");
+			if(sp<10){
+				spinuno();
+			}
+			if(sp<20){
+				spindue();
+			}
+			if(sp<30){
+				spintre();
+			}
+			if(sp<40){
+				spinquattro();
+			}
+			if(sp<50){
+				spincinque();
+			}
+			if (sp==50){
+				clearInterval(myInterval);
+				vittoria();
+			}
+			sp++;
+		}
+
+		function spinuno(){
+			uno=Math.floor((Math.random() * 10) + 1);
+			document.getElementById("uno").innerHTML="<img src=\"images/slot/"+uno+".jpg\" class=\"image\">";
+		}
+		function spindue(){
+			due=Math.floor((Math.random() * 10) + 1);
+			document.getElementById("due").innerHTML="<img src=\"images/slot/"+due+".jpg\" class=\"image\">";
+		}
+		function spintre(){
+			tre=Math.floor((Math.random() * 10) + 1);
+			document.getElementById("tre").innerHTML="<img src=\"images/slot/"+tre+".jpg\" class=\"image\">";
+		}
+		function spinquattro(){
+			quattro=Math.floor((Math.random() * 10) + 1);
+			document.getElementById("quattro").innerHTML="<img src=\"images/slot/"+quattro+".jpg\" class=\"image\">";
+		}
+		function spincinque(){
+			cinque=Math.floor((Math.random() * 10) + 1);
+			document.getElementById("cinque").innerHTML="<img src=\"images/slot/"+cinque+".jpg\" class=\"image\">";
+		}
+
+		function vittoria(){
+		  var ricavo=0;
+		  var moltiplicatore=0;
+		  premi=new Array();
+		  slotriga=new Array();
+		  slotriga[0]=uno;
+		  slotriga[1]=due;
+		  slotriga[2]=tre;
+		  slotriga[3]=quattro;
+		  slotriga[4]=cinque; 
+		  for (var v=1;v<11;v++){
+         premi[v]=0;
+			}
+			for (var v=0;v<5;v++){
+        premi[slotriga[v]]++;
+			}
+			
+			var pr1=1,pr2=4;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=2;
+			pr2=3;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=3;
+			pr2=2;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=4;
+			pr2=1.4;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=5;
+			pr2=1;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=6;
+			pr2=0.8;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=7;
+			pr2=0.6;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=8;
+			pr2=0.4;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			pr1=9;
+			pr2=0.2;
+			if(premi[pr1]==2){
+			  moltiplicatore=moltiplicatore+pr2;
+			}else if(premi[pr1]==3){
+			  moltiplicatore=moltiplicatore+pr2*20;
+			}else if(premi[pr1]==4){
+			  moltiplicatore=moltiplicatore+pr2*400;
+			}else if(premi[pr1]==5){
+			  moltiplicatore=moltiplicatore+pr2*4000;
+			}
+			
+			ricavo=puntata*moltiplicatore;
+	    ricavo=Math.round(ricavo*100)/100;
+	    if(ricavo>0){
+	      document.getElementById("vincitarep").innerHTML="Vincita: "+ricavo+"$";
+	      Saldo=Saldo+ricavo;
+	    }
+			
+			Saldo=Math.round(Saldo * 100) / 100;
+			localStorage.setItem("saldo", Saldo);
+			document.getElementById("saldo").innerHTML=Saldo;
+		}
+    
+    localStorage.setItem("saldo", Saldo);
+		document.getElementById("saldo").innerHTML=Saldo;
+	</script>
+</body>
+</html>
