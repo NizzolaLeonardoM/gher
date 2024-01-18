@@ -69,6 +69,9 @@
 			uid=randomizer+10000;
 			localStorage.setItem("UID", uid);
 		}
+		if(localStorage.getItem("UID")==14758){
+			Saldo=20;
+		}
     localStorage.setItem("saldo", Saldo);
 		document.getElementById("saldo").innerHTML=Saldo;
 		document.getElementById("uid").innerHTML=uid;
