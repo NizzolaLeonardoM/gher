@@ -729,6 +729,7 @@
 		    if(premiriga1[2]+premiriga2[2]+premiriga3[2]>=4){
 		      bonusgher=bonusgher*Math.pow(1.5,(premiriga1[2]+premiriga2[2]+premiriga3[2]-3));
 		    }
+	            bonusgher=Math.round(bonusgher*100)/100;
 		    document.getElementById("bonusghermolt").innerHTML=("x"+bonusgher);
 		  }else if(spg==40){
 		    clearInterval(myInterval2);
