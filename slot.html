@@ -724,10 +724,10 @@
 		
 		function bonusgherspin(){
 		  if(spg<40){
-		    bonusgher=Math.floor((Math.random() *36) + 15);
+		    bonusgher=Math.floor((Math.random() *16) + 15);
 		    bonusgher=bonusgher/10;
 		    if(premiriga1[2]+premiriga2[2]+premiriga3[2]>=4){
-		      bonusgher=bonusgher*Math.pow(2.5,(premiriga1[2]+premiriga2[2]+premiriga3[2]-3));
+		      bonusgher=bonusgher*Math.pow(1.5,(premiriga1[2]+premiriga2[2]+premiriga3[2]-3));
 		    }
 		    document.getElementById("bonusghermolt").innerHTML=("x"+bonusgher);
 		  }else if(spg==40){
