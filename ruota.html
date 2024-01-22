@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gher</title>
+	<style type="text/css">
+		body{
+			background-color: rgb(19,98,7);
+			margin: 0;
+		}
+		.slot{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 2vw;
+			margin-top: 0.5vh;
+			width: 92vw;
+			height: 70vh;
+			border-radius: 2vw;
+			border-width: 2vw;
+			background-color: rgb(250, 170, 192);
+			text-align: center;
+		}
+		.Saldo{
+			margin-left: 7vw;
+			margin-top: 0.5vh;
+			font-size: 9vw;
+		}
+		.uid{
+			margin-left: 7vw;
+			margin-top: 0.5vh;
+			font-size: 6vw;
+		}
+		.spin{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			width: 52vw;
+			height: 10vh;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(255,255,0);
+			font-size: 14vw;
+			color: black;
+			text-decoration: none;
+		}
+		.game{
+		  margin-top: 1vh;
+		}
+		.ruota{
+		  width: 90%;
+		}
+		.freccia{
+		  width: 6%;
+		  margin-top: -3%;
+		  margin-bottom: -0.4%;
+		}
+		.puntata1{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-top: 1vh;
+			width: 20%;
+			height: 8%;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(255,255,0);
+			font-size: 500%;
+			text-align: center;
+		}
+		.puntata2{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-top: 1vh;
+			width: 20%;
+			height: 8%;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(0,255,255);
+			font-size: 500%;
+			text-align: center;
+		}
+		.puntata5{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-top: 1vh;
+			width: 20%;
+			height: 8%;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(255,180,0);
+			font-size: 500%;
+			text-align: center;
+		}
+		.puntata10{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-top: 1vh;
+			width: 20%;
+			height: 8%;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(210,10,255);
+			font-size: 500%;
+			text-align: center;
+		}
+		.puntatacrazy{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-top: 0.4vh;
+			width: 20%;
+			height: 8%;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(220,10,10);
+			font-size: 500%;
+			text-align: center;
+		}
+		.puntataflip{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-top: 0.4vh;
+			width: 20%;
+			height: 8%;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(10,10,210);
+			font-size: 500%;
+			text-align: center;
+		}
+		.puntatahunt{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-top: 0.4vh;
+			width: 20%;
+			height: 8%;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(10,140,10);
+			font-size: 500%;
+			text-align: center;
+		}
+		.report{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 9vw;
+			margin-top: 0.5vh;
+			width: 72vw;
+			height: 4vh;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(30,30,30);
+			font-size: 4vw;
+			color: gold;
+			vertical-align: middle;
+		}
+		.report2{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 19vw;
+			margin-top: 0.4vh;
+			width: 52vw;
+			height: 4vh;
+			border-radius: 2vw;
+			border-width: 1vw;
+			background-color: rgb(30,30,30);
+			font-size: 5vw;
+			color: rgb(50,160,250);
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+  <div class="uid">UID: <span id="uid">0</span></div>
+	<div class="slot">
+		<div class="game">
+		  <img src="images/ruota/freccia.png" class="freccia">
+		  <div></div>
+		  <img src="images/ruota/ruota.png" class="ruota" id="ruota" onclick="spin();">
+		</div>
+		<div class="report2" id="report2">
+
+		</div>
+		<div class="report">
+			<span id="puntatarep"></span> <span id="vincitarep"></span>
+		</div>
+		<input class="puntata1" type="number" id="puntata1" name="puntata1" value="0" step="5">
+		<input class="puntata2" type="number" id="puntata2" name="puntata2" value="0" step="5">
+		<input class="puntata5" type="number" id="puntata5" name="puntata5" value="0" step="5">
+		<input class="puntata10" type="number" id="puntata10" name="puntata10" value="0" step="5">
+		<div></div>
+		<input class="puntatacrazy" type="number" id="puntatacrazy" name="puntatacrazy" value="0" step="5">
+		<input class="puntataflip" type="number" id="puntataflip" name="puntataflip" value="0" step="5">
+		<input class="puntatahunt" type="number" id="puntatahunt" name="puntatahunt" value="0" step="5">
+	</div>
+	<div class="Saldo">Saldo: <span id="saldo">0</span>$</div>
+	<script type="text/javascript">
+		var Saldo=localStorage.getItem("saldo");
+		var uid=localStorage.getItem("UID");
+		var random=0;
+		var rotazione=270;
+		var puntata1=0, puntata2, puntata5, puntata10, puntatacrazy, puntataflip, puntatahunt;
+		var sp=0;
+		var tempo=0;
+		var bonusnome, bonusmolt;
+		const premi=[
+		  "null",
+		  10,
+		  1,
+		  2,
+		  1,
+		  "gherflip",
+		  2,
+		  1,
+		  5,
+		  2,
+		  1,
+		  "crazygher",
+		  1,
+		  2,
+		  10,
+		  1,
+		  2,
+		  "gherflip",
+		  2,
+		  1,
+		  5,
+		  2,
+		  1,
+		  "gherhunt",
+		  1,
+		  5,
+		  1,
+		  10,
+		  1,
+		  "gherflip",
+		  1,
+		  2,
+		  1,
+		  5,
+		  2,
+		  "gherflip",
+		  1,
+		  5,
+		  1,
+		  2,
+		  1,
+		  "gherhunt",
+		  2
+		  ];
+		  
+		  const bonus=[
+		    1, 2, 5, 10, "crazygher", "gherflip", "gherhunt"
+		    ];
+		    
+		  const bonusnum=[
+		    2, 3, 4, 5, 7, 10, 15, 25, 50
+		    ];
+		
+		function spin(){
+		  if(sp==0 || sp==random*20){
+		  puntata1=document.getElementById("puntata1").value;
+		  puntata2=document.getElementById("puntata2").value;
+		  puntata5=document.getElementById("puntata5").value;
+		  puntata10=document.getElementById("puntata10").value;
+		  puntatacrazy=document.getElementById("puntatacrazy").value;
+		  puntataflip=document.getElementById("puntataflip").value;
+		  puntatahunt=document.getElementById("puntatahunt").value;
+		  puntata1=parseInt(puntata1);
+		  puntata2=parseInt(puntata2);
+		  puntata5=parseInt(puntata5);
+		  puntata10=parseInt(puntata10);
+		  puntatacrazy=parseInt(puntatacrazy);
+		  puntataflip=parseInt(puntataflip);
+		  puntatahunt=parseInt(puntatahunt);
+		  var puntatatotale=puntata1+puntata2+puntata5+puntata10+puntatacrazy+puntataflip+puntatahunt;
+		  
+		  if(puntatatotale<=Saldo && puntata1>=0 && puntata2>=0 && puntata5>=0 && puntata10>=0 && puntatacrazy>=0 && puntataflip>=0 && puntatahunt>=0){
+		    sp=0;
+		    tempo=0;
+		    random=(Math.floor((Math.random()*70)+70))/10;
+		    bonusnome=Math.floor(Math.random()*7);
+		    bonusnome=bonus[bonusnome];
+		    bonusmolt=Math.floor(Math.random()*9);
+		    bonusmolt=bonusnum[bonusmolt];
+		    document.getElementById("report2").innerHTML=(bonusnome+": x"+bonusmolt);
+		    myInterval=setInterval(spinny, 50);
+		    
+		  }else if(puntatatotale>Saldo && puntata1>=0 && puntata2>=0 && puntata5>=0 && puntata10>=0 && puntatacrazy>=0 && puntataflip>=0 && puntatahunt>=0){
+		     document.getElementById("puntatarep").innerHTML="Puntata superiore al saldo.";
+		     document.getElementById("vincitarep").innerHTML="";
+		  }else{
+		    document.getElementById("puntatarep").innerHTML="Puntata non valida.";
+				document.getElementById("vincitarep").innerHTML="";
+		  }
+		  }
+		}
+		
+		function spinny(){
+		  if(rotazione+(((random-(sp/20))*14)/random)>360){
+		    var resto=360-rotazione;
+		    rotazione=(((random-(sp/20))*14)/random)-resto;
+		  }else{
+		    rotazione=rotazione+(((random-(sp/20))*14)/random);
+		  }
+		  document.getElementById("ruota").style.transform="rotate("+rotazione+"deg)";
+		  if(sp/20==random){
+		    clearInterval(myInterval);
+		    vittoria();
+		  }else{
+		    sp++;
+		  }
+		}
+		
+		function vittoria(){
+		  var premio,elemento,rotinv;
+		  rotinv=360-rotazione;
+		  elemento=rotinv/(360/42)+1;
+		  elemento=Math.trunc(elemento);
+		  premio=premi[elemento];
+		  alert(rotinv+" "+elemento+" "+premio);
+		}
+		
+		document.getElementById("ruota").style.transform="rotate("+rotazione+"deg)";
+    localStorage.setItem("saldo", Saldo);
+		document.getElementById("saldo").innerHTML=Saldo;
+		document.getElementById("uid").innerHTML=uid;
+	</script>
+</body>
+</html>
