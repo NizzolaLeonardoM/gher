@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gher</title>
+	<style type="text/css">
+		body{
+			background-color: rgb(19,98,7);
+			margin: 0;
+		}
+		.slot{
+			border-style: solid;
+			border-color: rgb(0,0,0);
+			margin-left: 2vw;
+			margin-top: 0.5vh;
+			width: 92vw;
+			height: 70vh;
+			border-radius: 2vw;
+			border-width: 2vw;
+			background-color: rgb(170, 170, 190);
+			text-align: center;
+		}
+		.Saldo{
+			margin-left: 7vw;
+			margin-top: 0.5vh;
+			font-size: 9vw;
+		}
+		.uid{
+			margin-left: 7vw;
+			margin-top: 0.5vh;
+			font-size: 6vw;
+		}
+		.avvertenze{
+			font-size: 4vh;
+			margin-top: 2vh;
+			margin-left: 2vw;
+			margin-right: 2vw;
+			margin-bottom: 10vh;
+		}
+		.kuru{
+		  margin-top: 5vh;
+		  width: 70%;
+		}
+	</style>
+</head>
+<body>
+  <div class="uid">UID: <span id="uid">0</span></div>
+	<div class="slot">
+	  <img src="images/kurukuru-kururing.gif" class="kuru">
+		<div class="avvertenze">Il sito e' in manutenzione...</div>
+	</div>
+	<div class="Saldo">Saldo: <span id="saldo">0</span>$</div>
+	<script type="text/javascript">
+		var Saldo=localStorage.getItem("saldo");
+		var uid=localStorage.getItem("UID");
+		if(localStorage.getItem("UID")>=10000){
+		}else{
+			Saldo=10;
+			var randomizer=Math.floor(Math.random() * 10000);
+			uid=randomizer+10000;
+			localStorage.setItem("UID", uid);
+		}
+		
+		if(localStorage.getItem("UID")==0){
+			Saldo=20;
+		}
+		
+    localStorage.setItem("saldo", Saldo);
+		document.getElementById("saldo").innerHTML=Saldo;
+		document.getElementById("uid").innerHTML=uid;
+	</script>
+</body>
+</html>
