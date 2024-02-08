@@ -1,0 +1,38 @@
+Ritorno al giocatore = x = 0.925
+Puntata = y
+
+Vincita = v = y * x
+
+
+Prob tris con/senza jolly = 1 * 1 * 1 * 4/10 * 2/10 = 0.08
+Prob quad con/senza jolly = 1 * 1 * 3/10 * 2/10 * 2/10 = 0.012
+Prob full con/senza jolly = 1 * 2/10 * 2/10 * 2/10 * 2/10 = 0.0016
+
+cumulative
+tris = 0.08 * 3 = 0.24
+quad = 0.012 * 3 = 0.036
+full = 0.0016 * 3 = 0.0048
+
+prob bonus per n jolly = (1 - (9/10)^15)^n
+prob bonus gher = (1 - (9/10)^15)^4 = 0.39766758
+
+valore tris = ((y/0.24) * 0.39 * 0.925)/4 = 1.503125/4   ---> 1.50/4
+valore quad = ((y/0.036) * 0.39 * 0.925)/4 = 10.0208/4   ---> 10/4
+valore full = ((y/0.0048) * 0.39 * 0.925)/4 = 75.15625/4 ---> 75/4
+
+distribuzione valori (crescente):
+    T     Q   F    _
+3:  0.50, 4,  25    |
+8:  0.50, 4,  25    |
+                    |
+9:  1,    7,  50    |
+6:  1,    7,  50    |
+                    |
+7:  1.50, 10, 75    |--->/4
+2:  1.50, 10, 75    |
+                    |
+5:  2,    13, 100   |
+4:  2,    13, 100   |
+                    |
+10: 2.50, 16, 125   |
+1:  2.50, 16, 125   |
