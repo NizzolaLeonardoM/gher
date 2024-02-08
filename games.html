@@ -1,113 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="css/games.css">
 	<title>Gher</title>
-	<style type="text/css">
-		body{
-			background-color: rgb(19,98,7);
-			margin: 0;
-		}
-		.slot{
-			border-style: solid;
-			border-color: rgb(0,0,0);
-			margin-left: 2vw;
-			margin-top: 0.5vh;
-			width: 92vw;
-			height: 70vh;
-			border-radius: 2vw;
-			border-width: 2vw;
-			background-color: rgb(175, 201, 252);
-			text-align: center;
-		}
-		.Saldo{
-			margin-left: 7vw;
-			margin-top: 0.5vh;
-			font-size: 9vw;
-		}
-		.uid{
-			margin-left: 7vw;
-			margin-top: 0.5vh;
-			font-size: 6vw;
-		}
-		.slotgm{
-			border-style: solid;
-			border-color: rgb(0,0,0);
-			width: 80vw;
-			height: 15vh;
-			border-radius: 2vw;
-			border-width: 1vw;
-			background-color: rgb(0,0,0);
-			background-image: url("images/games/slot.png");
-			background-repeat: no-repeat;
-			background-size: cover;
-			font-size: 14vw;
-			color: white;
-			text-shadow: 1vw 1vw darkgray;
-			text-decoration: none;
-			font-weight: bold;
-		}
-		.ruotagm{
-			border-style: solid;
-			border-color: rgb(0,0,0);
-			width: 80vw;
-			height: 15vh;
-			border-radius: 2vw;
-			border-width: 1vw;
-			background-color: rgb(0,0,0);
-			background-image: url("images/games/ruota.png");
-			background-repeat: no-repeat;
-			background-size: cover;
-			font-size: 14vw;
-			color: white;
-			text-shadow: 1vw 1vw darkgray;
-			text-decoration: none;
-			font-weight: bold;
-		}
-		.back{
-			border-style: solid;
-			border-color: rgb(0,0,0);
-			height: 10vh;
-			border-radius: 2vw;
-			border-width: 1vw;
-			background-color: rgb(255,0,0);
-			font-size: 5vw;
-			color: black;
-			text-decoration: none;
-			margin-right: 70vw;
-		}
-	</style>
 </head>
 <body>
-  <div class="uid">UID: <span id="uid">0</span></div>
-	<div class="slot">
-	  <div style="margin-top: 2vh;">
-		  <a href="slot.html"><button class="slotgm">Slot Gher</button></a>
-		</div>
-		<div style="margin-top: 2vh;">
-		  <a href="ruota.html"><button class="ruotagm">Crazy Gher</button></a>
+	<div class="bg-image"></div>
+  	<div class="uid">UID: <span id="uid">0</span></div>
+	<div class="main">
+		<div class="selection">
+			<div style="margin-top: 2vh;">
+				<a href="slot.html"><button class="slotgm">Slot Gher</button></a>
+			  </div>
+			  <div style="margin-top: 2vh;">
+				<a href="ruota.html"><button class="ruotagm">Crazy Gher</button></a>
+			  </div>
 		</div>
 		<div style="margin-top: 30.5vh;"></div>
-		<a href="index.html" class="back" id="home">&nbsp;<b><-</b>&nbsp;</a>
+		<button onclick="location.href='index.html';" class="back" id="home">&nbsp;<b><</b>&nbsp;</button>
 	</div>
 	<div class="Saldo">Saldo: <span id="saldo">0</span>$</div>
-	<script type="text/javascript">
-		var Saldo=localStorage.getItem("saldo");
-		var uid=localStorage.getItem("UID");
-		if(localStorage.getItem("UID")>=10000){
-		}else{
-			Saldo=10;
-			var randomizer=Math.floor(Math.random() * 10000);
-			uid=randomizer+10000;
-			localStorage.setItem("UID", uid);
-		}
-		
-		if(localStorage.getItem("UID")==0){
-			Saldo=20;
-		}
-		
-    localStorage.setItem("saldo", Saldo);
-		document.getElementById("saldo").innerHTML=Saldo;
-		document.getElementById("uid").innerHTML=uid;
-	</script>
+	<script src="js/games.js"></script>
 </body>
 </html>
