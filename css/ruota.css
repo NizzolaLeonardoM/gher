@@ -57,6 +57,10 @@ margin: 0;
   margin-top: 1vh;
 }
 
+.freccia{
+  position: relative;
+  z-index: 1;
+}
 @media screen and (min-width: 480px){
     .freccia{
       max-width: 40vw;
