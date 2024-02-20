@@ -120,13 +120,13 @@ function vittoria() {
     }
     for (var v = 1; v < 6; v++) {
         if (slot[v] == 2) {
-            if (controllo[1] >= 1) {
+            if (controllo[1] >= 2) {
                 controllo[1]++;
-            } else if (controllo[10] >= 1) {
+            } else if (controllo[10] >= 2) {
                 controllo[10]++;
-            } else if (controllo[4] >= 1) {
+            } else if (controllo[4] >= 2) {
                 controllo[4]++;
-            } else if (controllo[5] >= 1) {
+            } else if (controllo[5] >= 2) {
                 controllo[5]++;
             } else if (controllo[6] >= 2) {
                 controllo[6]++;
@@ -148,13 +148,13 @@ function vittoria() {
     }
     for (var v = 6; v < 11; v++) {
         if (slot[v] == 2) {
-            if (controllo[1] >= 1) {
+            if (controllo[1] >= 2) {
                 controllo[1]++;
-            } else if (controllo[10] >= 1) {
+            } else if (controllo[10] >= 2) {
                 controllo[10]++;
-            } else if (controllo[4] >= 1) {
+            } else if (controllo[4] >= 2) {
                 controllo[4]++;
-            } else if (controllo[5] >= 1) {
+            } else if (controllo[5] >= 2) {
                 controllo[5]++;
             } else if (controllo[6] >= 2) {
                 controllo[6]++;
@@ -176,13 +176,13 @@ function vittoria() {
     }
     for (var v = 11; v < 16; v++) {
         if (slot[v] == 2) {
-            if (controllo[1] >= 1) {
+            if (controllo[1] >= 2) {
                 controllo[1]++;
-            } else if (controllo[10] >= 1) {
+            } else if (controllo[10] >= 2) {
                 controllo[10]++;
-            } else if (controllo[4] >= 1) {
+            } else if (controllo[4] >= 2) {
                 controllo[4]++;
-            } else if (controllo[5] >= 1) {
+            } else if (controllo[5] >= 2) {
                 controllo[5]++;
             } else if (controllo[6] >= 2) {
                 controllo[6]++;
